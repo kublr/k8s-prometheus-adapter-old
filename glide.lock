@@ -1,5 +1,5 @@
-hash: 1d2ad16816cec54a2561278dfd05ae9725247ea9b72db5c7d330f0074d069fad
-updated: 2017-09-28T15:22:28.593829441-04:00
+hash: bfa97672b081f2836e5cafdfd94deac191ef4c00ea24b0663965553158db818f
+updated: 2018-03-13T18:03:49.195676+04:00
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c2a2088577d12123ddee5f54e0675
@@ -212,7 +212,7 @@ imports:
 - name: github.com/spf13/pflag
   version: 9ff6c6923cfffbcd502984b8e0c80539a94968b7
 - name: github.com/stretchr/testify
-  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
+  version: 12b6f73e6084dad08a7c6e575284b177ecafbc71
   subpackages:
   - assert
   - require

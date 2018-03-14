@@ -29,7 +29,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	fakedyn "k8s.io/client-go/dynamic/fake"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
 	pmodel "github.com/prometheus/common/model"
 )
 

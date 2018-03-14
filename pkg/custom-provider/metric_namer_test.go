@@ -29,7 +29,7 @@ import (
 	apimeta "k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
 )
 
 // restMapper creates a RESTMapper with just the types we need for

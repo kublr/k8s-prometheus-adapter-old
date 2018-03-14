@@ -1,4 +1,4 @@
-package: github.com/directxman12/k8s-prometheus-adapter
+package: github.com/kublr/k8s-prometheus-adapter
 import:
 - package: github.com/spf13/cobra
 - package: k8s.io/apimachinery
