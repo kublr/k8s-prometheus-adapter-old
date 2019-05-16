@@ -26,7 +26,7 @@ import (
 	fakedyn "k8s.io/client-go/dynamic/fake"
 
 	config "github.com/directxman12/k8s-prometheus-adapter/cmd/config-gen/utils"
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
 	fakeprom "github.com/directxman12/k8s-prometheus-adapter/pkg/client/fake"
 	"github.com/directxman12/k8s-prometheus-adapter/pkg/naming"
 	pmodel "github.com/prometheus/common/model"

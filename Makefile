@@ -1,6 +1,6 @@
-REGISTRY?=directxman12
+REGISTRY?=kublr
 IMAGE?=k8s-prometheus-adapter
-TEMP_DIR:=$(shell mktemp -d)
+TEMP_DIR?=$(shell mktemp -d)
 ARCH?=amd64
 ALL_ARCH=amd64 arm arm64 ppc64le s390x
 ML_PLATFORMS=linux/amd64,linux/arm,linux/arm64,linux/ppc64le,linux/s390x
@@ -38,8 +38,8 @@ docker-build:
 	cp deploy/Dockerfile $(TEMP_DIR)
 	cd $(TEMP_DIR) && sed -i "s|BASEIMAGE|$(BASEIMAGE)|g" Dockerfile
 
-	docker run -it -v $(TEMP_DIR):/build -v $(shell pwd):/go/src/github.com/directxman12/k8s-prometheus-adapter -e GOARCH=$(ARCH) $(GOIMAGE) /bin/bash -c "\
-		CGO_ENABLED=0 go build -tags netgo -o /build/adapter github.com/directxman12/k8s-prometheus-adapter/cmd/adapter"
+	docker run -it -v $(TEMP_DIR):/build -v $(shell pwd):/go/src/github.com/kublr/k8s-prometheus-adapter -e GOARCH=$(ARCH) $(GOIMAGE) /bin/bash -c "\
+		CGO_ENABLED=0 go build -tags netgo -o /build/adapter github.com/kublr/k8s-prometheus-adapter/cmd/adapter"
 
 	docker build -t $(REGISTRY)/$(IMAGE)-$(ARCH):$(VERSION) $(TEMP_DIR)
 	rm -rf $(TEMP_DIR)
@@ -64,7 +64,7 @@ push: ./manifest-tool $(addprefix push-,$(ALL_ARCH))
 
 vendor: Gopkg.lock
 ifeq ($(VENDOR_DOCKERIZED),1)
-	docker run -it -v $(shell pwd):/go/src/github.com/directxman12/k8s-prometheus-adapter -w /go/src/github.com/directxman12/k8s-prometheus-adapter golang:1.10 /bin/bash -c "\
+	docker run -it -v $(shell pwd):/go/src/github.com/kublr/k8s-prometheus-adapter -w /go/src/github.com/kublr/k8s-prometheus-adapter golang:1.10 /bin/bash -c "\
 		curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
 		&& dep ensure -vendor-only"
 else
