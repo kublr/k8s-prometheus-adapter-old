@@ -75,7 +75,7 @@ podTemplate(
                         withCredentials([
                                 usernamePassword(credentialsId: 'kublr-docker-hub', passwordVariable: 'REPO_PASSWORD', usernameVariable: 'REPO_USERNAME')
                         ]) {
-                            // build and publish helm package
+                            // build and publish docker image
                             try {
                                 sh """
                                 docker login -u '${REPO_USERNAME}' -p '${REPO_PASSWORD}'
