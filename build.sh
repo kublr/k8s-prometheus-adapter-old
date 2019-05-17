@@ -4,9 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-export GOPATH=$HOME/go
 export ARCH=amd64
-export OUT_DIR=./_output
 
 # if 'publish' parameter is specified, do publish
 DO_PUBLISH=""
@@ -19,12 +17,13 @@ readonly ROOT="$(dirname "$(readlink -f "${BASH_SOURCE}")")"
 
 # It is expected that CHART_NAME and CHART_VERSION variables are loaded from main.properties file
 source "${ROOT}"/main.properties
+export REGISTRY IMAGE VERSION
 
 # Build procedure may also set PUBLISH_VERSION variable, which will be used as a version for the image
 PUBLISH_VERSION="${PUBLISH_VERSION:-"${VERSION}"}"
 
 # Target package name
-TAG="${REPOSITORY}:${PUBLISH_VERSION}"
+TAG="${REGISTRY}/${IMAGE}-${ARCH}:${PUBLISH_VERSION}"
 
 if [[ -n "${DO_PUBLISH}" ]]; then
     # avoid overwriting image in the repository
@@ -37,21 +36,8 @@ fi
 # cleanup
 docker rmi -f "${TAG}" || true
 
-# copy Dockerfile
-cp deploy/Dockerfile .
-
-# change Dockerfile
-sed -i "s|BASEIMAGE|busybox|g" Dockerfile
-sed -i "s|COPY adapter|COPY ${OUT_DIR}/${ARCH}/adapter|g" Dockerfile
-
-# build project
-make build
-
-# build
-docker build -t "${TAG}" "${ROOT}"
-
-# remove Dockerfile
-rm "${ROOT}"/Dockerfile
+# build docker image
+make docker-build
 
 if [[ -n "${DO_PUBLISH}" ]]; then
     # publish

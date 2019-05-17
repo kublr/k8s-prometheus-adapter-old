@@ -1,6 +1,6 @@
-REGISTRY?=kublr
+REGISTRY?=directxman12
 IMAGE?=k8s-prometheus-adapter
-TEMP_DIR?=$(shell mktemp -d)
+TEMP_DIR?=$(eval TEMP_DIR := $$(shell mktemp -d))$(TEMP_DIR)
 ARCH?=amd64
 ALL_ARCH=amd64 arm arm64 ppc64le s390x
 ML_PLATFORMS=linux/amd64,linux/arm,linux/arm64,linux/ppc64le,linux/s390x
