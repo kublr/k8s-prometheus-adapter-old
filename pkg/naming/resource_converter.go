@@ -26,8 +26,8 @@ import (
 	apimeta "k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/config"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/config"
 	"github.com/golang/glog"
 	"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/provider"
 	pmodel "github.com/prometheus/common/model"

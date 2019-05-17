@@ -31,9 +31,9 @@ import (
 	apitypes "k8s.io/apimachinery/pkg/types"
 	metrics "k8s.io/metrics/pkg/apis/metrics"
 
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/client"
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/config"
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/naming"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/client"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/config"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/naming"
 	pmodel "github.com/prometheus/common/model"
 )
 

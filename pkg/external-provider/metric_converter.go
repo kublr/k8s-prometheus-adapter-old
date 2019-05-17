@@ -17,7 +17,7 @@ import (
 	"errors"
 	"fmt"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
 	"github.com/prometheus/common/model"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

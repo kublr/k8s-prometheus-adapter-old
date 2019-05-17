@@ -23,8 +23,8 @@ import (
 	"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/provider"
 	apimeta "k8s.io/apimachinery/pkg/api/meta"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/naming"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/naming"
 	"github.com/golang/glog"
 	pmodel "github.com/prometheus/common/model"
 )

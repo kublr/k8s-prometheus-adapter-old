@@ -32,7 +32,7 @@ all: $(OUT_DIR)/$(ARCH)/adapter
 
 src_deps=$(shell find pkg cmd -type f -name "*.go")
 $(OUT_DIR)/%/adapter: $(src_deps)
-	CGO_ENABLED=0 GOARCH=$* go build -tags netgo -o $(OUT_DIR)/$*/adapter github.com/directxman12/k8s-prometheus-adapter/cmd/adapter
+	CGO_ENABLED=0 GOARCH=$* go build -tags netgo -o $(OUT_DIR)/$*/adapter github.com/kublr/k8s-prometheus-adapter/cmd/adapter
 	
 docker-build:
 	cp deploy/Dockerfile $(TEMP_DIR)

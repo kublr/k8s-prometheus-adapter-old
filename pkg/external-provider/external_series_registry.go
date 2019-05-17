@@ -20,8 +20,8 @@ import (
 	"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/provider"
 	"k8s.io/apimachinery/pkg/labels"
 
-	prom "github.com/directxman12/k8s-prometheus-adapter/pkg/client"
-	"github.com/directxman12/k8s-prometheus-adapter/pkg/naming"
+	prom "github.com/kublr/k8s-prometheus-adapter/pkg/client"
+	"github.com/kublr/k8s-prometheus-adapter/pkg/naming"
 )
 
 // ExternalSeriesRegistry acts as the top-level converter for transforming Kubernetes requests
