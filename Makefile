@@ -38,7 +38,7 @@ docker-build:
 	cp deploy/Dockerfile $(TEMP_DIR)
 	cd $(TEMP_DIR) && sed -i "s|BASEIMAGE|$(BASEIMAGE)|g" Dockerfile
 
-	docker run -it -v $(TEMP_DIR):/build -v $(shell pwd):/go/src/github.com/kublr/k8s-prometheus-adapter -e GOARCH=$(ARCH) $(GOIMAGE) /bin/bash -c "\
+	docker run -i -v $(TEMP_DIR):/build -v $(shell pwd):/go/src/github.com/kublr/k8s-prometheus-adapter -e GOARCH=$(ARCH) $(GOIMAGE) /bin/bash -c "\
 		CGO_ENABLED=0 go build -tags netgo -o /build/adapter github.com/kublr/k8s-prometheus-adapter/cmd/adapter"
 
 	docker build -t $(REGISTRY)/$(IMAGE)-$(ARCH):$(VERSION) $(TEMP_DIR)
