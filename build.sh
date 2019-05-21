@@ -4,10 +4,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-export GOPATH=$HOME/go
-export ARCH=amd64
-export OUT_DIR=./_output
-
 # if 'publish' parameter is specified, do publish
 DO_PUBLISH=""
 if [[ " $* " =~ ' publish ' ]]; then
@@ -37,21 +33,8 @@ fi
 # cleanup
 docker rmi -f "${TAG}" || true
 
-# copy Dockerfile
-cp deploy/Dockerfile .
-
-# change Dockerfile
-sed -i "s|BASEIMAGE|busybox|g" Dockerfile
-sed -i "s|COPY adapter|COPY ${OUT_DIR}/${ARCH}/adapter|g" Dockerfile
-
-# build project
-make build
-
 # build
 docker build -t "${TAG}" "${ROOT}"
-
-# remove Dockerfile
-rm "${ROOT}"/Dockerfile
 
 if [[ -n "${DO_PUBLISH}" ]]; then
     # publish
